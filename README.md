@@ -20,6 +20,7 @@ cd ./ns-client/client2
 kubectl apply -k ./
 ```
 2) `Echo` deployment
+
 This deployment creates an `echo` service listening on 1025, 1026, 1027 port
 - `client1` namespace
 ```sh
@@ -30,6 +31,7 @@ This deployment creates an `echo` service listening on 1025, 1026, 1027 port
 ./ns-client/client2/_echo/1-echo.sh
 ```
 3) `Websocket` deployment
+
 This deployment creates an `websocket-kube-connector` service listening on 8080 port
 - `client1` namespace
 ```sh
