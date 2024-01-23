@@ -1,6 +1,6 @@
 # kong-EE-2-KICs
 Deploy a Kong Ingress Controller (i.e. KIC) in different namespaces and in the same Kubernetes Cluster.
-- The KIC#1 deployed in` kong-client1` watches K8s events of `client1` namespace
+- The KIC#1 deployed in `kong-client1` watches K8s events of `client1` namespace
 - The KIC#2 deployed in `kong-client2` watches K8s events of `client2` namespace
 
 ## Create the `client1` and `client2` namespaces
