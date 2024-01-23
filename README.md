@@ -35,7 +35,7 @@ kubectl apply -f kic-client1-tcp.sh
 ```
 
 ## Deploy Prometheus and Grafana in `monitoring` namespace
-This deployment creates an instance of Prometheus and Grafana in shared namespace called `monitoring`
+This deployment creates an instance of Prometheus and Grafana in a shared namespace called `monitoring`
 ```sh
 cd ./_prometheus-grafana
 ./1-install.sh
@@ -44,7 +44,7 @@ cd ./_prometheus-grafana
 ./3-exposeLB.sh
 ```
 
-## Create the deployment in `client1` and `client2` namespace
+## Create the Applications deployment in `client1` and `client2` namespace
 1) `Httpbin` deployment. This deployment creates an `httpbin` service listening on 8080 port
 - `client1` namespace
 ```sh
