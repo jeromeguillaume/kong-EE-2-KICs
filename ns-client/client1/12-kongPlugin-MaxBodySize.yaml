@@ -1,0 +1,11 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: client1-req-size-limiting
+  namespace: client1
+  annotations:
+    kubernetes.io/ingress.class: kong-client1
+config:
+  size_unit: bytes
+  allowed_payload_size: 40
+plugin: request-size-limiting

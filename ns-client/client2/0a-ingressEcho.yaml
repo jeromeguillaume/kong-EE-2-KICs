@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: echo-client2
+  namespace: client2
+  annotations:
+    kubernetes.io/ingress.class: kong-client2
+    konghq.com/strip-path: 'true'
+    #konghq.com/methods: GET
+    #konghq.com/plugins: ratelimit, caching, oas-validation-httpbin
+spec:
+  ingressClassName: kong-client2
+  rules:
+  - http:
+      paths:
+      - path: '/client2/echo'
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: echo
+            port:
+              number: 1027

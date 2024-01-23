@@ -1,0 +1,13 @@
+apiVersion: configuration.konghq.com/v1beta1
+kind: TCPIngress
+metadata:
+  name: tcp-client1
+  namespace: client1
+  annotations:
+    kubernetes.io/ingress.class: kong-client1
+spec:
+  rules:
+  - port: 9000
+    backend:
+      serviceName: tcp-backends
+      servicePort: 23

@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: httpbin-client2
+  namespace: client2
+  annotations:
+    konghq.com/strip-path: "true"
+    konghq.com/plugins: client2-rate-limit
+spec:
+  ingressClassName: kong-client2
+  rules:
+  - http:
+      paths:
+      - path: /client2/httpbin
+        pathType: Prefix
+        backend:
+          service:
+             name: httpbin
+             port:
+               number: 8080

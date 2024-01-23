@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: starwars-backends
+  name: tcp-backends
+  namespace: client1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: starwars-backends
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: starwars-backends
+    spec:
+      containers:
+      - image: rohan/ascii-telnet-server
+        name: starwarsbackends
+        ports:
+        - containerPort: 23
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: starwars-backends
+  name: tcp-backends
+  namespace: client1
+spec:
+  ports:
+  - port: 23
+    protocol: TCP
+    targetPort: 23
+  selector:
+    app: starwars-backends
+  type: ClusterIP

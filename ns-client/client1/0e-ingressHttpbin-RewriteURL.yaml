@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: httpbin-api-v1-client1
+  namespace: client1
+  annotations:
+    #konghq.com/plugins: client1-rewrite-uri
+    konghq.com/strip-path: "false"
+spec:
+  ingressClassName: kong-client1
+  rules:
+  - http:
+      paths:
+      - path: /client1/api/v1
+      #- path: /client1/api/v(?<apiVersion>[0-9]+)/(?<lastSegments>.*)
+        pathType: Prefix
+        backend:
+          service:
+             name: httpbin
+             port:
+               number: 8080

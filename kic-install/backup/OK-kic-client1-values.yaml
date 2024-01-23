@@ -1,0 +1,38 @@
+controller:
+  ingressController:
+    #image:
+    #  tag: "2.11"
+    enabled: true
+    env:
+      feature_gates: "FillIDs=true"
+      watch_namespace: client1
+    ingressClass: kong-client1
+    gatewayDiscovery:
+      enabled: true
+      generateAdminApiService: true
+
+gateway:
+  image:
+    repository: kong/kong-gateway
+    tag: "3.4"
+  enabled: true
+  deployment:
+    kong:
+      enabled: true
+  admin:
+    enabled: true
+    type: ClusterIP
+    clusterIP: None
+  ingressController:
+    enabled: false
+  env:
+    role: traditional
+    database: "off"
+    log_level: debug
+  serviceMonitor:
+    enabled: true
+    labels:
+      release: promstack
+  enterprise:
+    enabled: true
+    license_secret: kong-enterprise-license

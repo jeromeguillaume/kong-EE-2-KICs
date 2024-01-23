@@ -1,0 +1,11 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: client1-rewrite-uri
+  namespace: client1
+  annotations:
+    kubernetes.io/ingress.class: kong-client1
+config:
+  replace:
+    uri: /$(uri_captures["lastSegments"])/$(uri_captures["apiVersion"])
+plugin: request-transformer

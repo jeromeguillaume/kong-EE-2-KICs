@@ -1,0 +1,5 @@
+namespace: client2
+commonLabels:
+  client: client2
+resources:
+- ../base

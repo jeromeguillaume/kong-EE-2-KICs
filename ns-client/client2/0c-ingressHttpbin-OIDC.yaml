@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: httpbin-oidc-client2
+  namespace: client2
+  annotations:
+    konghq.com/strip-path: "true"
+    konghq.com/plugins: client2-oidc
+spec:
+  ingressClassName: kong-client2
+  rules:
+  - http:
+      paths:
+      - path: /client2/OIDCHttpbin
+        pathType: Prefix
+        backend:
+          service:
+             name: httpbin
+             port:
+               number: 8080

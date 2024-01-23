@@ -1,0 +1,13 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: client1-ip-restriction
+  namespace: client1
+  annotations:
+    kubernetes.io/ingress.class: kong-client1
+config:
+  allow:
+  deny: 
+  - "10.84.0.0/16"
+  - "10.132.0.0/16"
+plugin: ip-restriction

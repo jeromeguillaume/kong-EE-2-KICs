@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kube-connector-client1
+  namespace: client1
+  annotations:
+    konghq.com/strip-path: "true"
+spec:
+  ingressClassName: kong-client1
+  rules:
+  - http:
+      paths:
+      - path: /client1/websocket-kube-connector
+        pathType: Prefix
+        backend:
+          service:
+             name: websocket-kube-connector
+             port:
+               number: 8080

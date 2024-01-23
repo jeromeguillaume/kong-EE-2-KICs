@@ -1,0 +1,29 @@
+# k -n client1 annotate svc echo konghq.com/upstream-policy=client1-echo-upstream-customization
+apiVersion: configuration.konghq.com/v1beta1
+kind: KongUpstreamPolicy
+metadata:
+  name: client1-echo-upstream-customization
+  namespace: client1
+  annotations:
+     kubernetes.io/ingress.class: kong-client1
+spec:
+  hashOn: 
+  #  cookie: mod
+  #  cookiePath: /
+    header: hash_x
+  #algorithm: round-robin | consistent-hashing | least-connections | latency
+  algorithm: consistent-hashing
+  healthchecks:
+    active:
+      type: http
+      healthy: 
+        httpStatuses: [200]
+        interval: 5
+        successes: 2
+      unhealthy: 
+        httpStatuses: [500]
+        interval: 5
+        httpFailures: 2
+      httpPath: /echo
+      timeout: 2
+    threshold: 95

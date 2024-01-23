@@ -1,0 +1,14 @@
+1- Remove all Ingress and TCPIngress definition in client1 & client2
+2- Remove all konghq.com/plugins in client1 & client2
+3- Remove the Upstream policy
+   k -n client1 delete KongUpstreamPolicy/client1-echo-upstream-customization
+   k -n client1 delete KongUpstreamPolicy/client1-httpbin-upstream-customization
+4- Remove the Upstream policy
+   k delete kongclusterplugin/client1-file-log
+   k delete kongclusterplugin/client2-file-log
+5- Remove the /tmp/*.log
+   GW#1: rm -f /tmp/kong-client1-mod.log
+   GW#2: rm -f /tmp/kong-client2-mod.log
+
+Check in Grafana that all Upstream have yellow status
+Check in GW that there is no log files in /tmp

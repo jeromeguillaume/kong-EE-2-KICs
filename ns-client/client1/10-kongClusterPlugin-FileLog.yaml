@@ -1,0 +1,12 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongClusterPlugin
+metadata:
+  name: client1-file-log
+  annotations:
+    kubernetes.io/ingress.class: kong-client1
+  labels:
+    global: "true"
+config:
+  path: /tmp/kong-client1-mod.log
+  reopen: true
+plugin: file-log

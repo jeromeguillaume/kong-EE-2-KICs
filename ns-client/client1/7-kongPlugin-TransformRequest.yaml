@@ -1,0 +1,15 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: client1-transform-request
+  namespace: client1
+  annotations:
+    kubernetes.io/ingress.class: kong-client1
+config:
+  add:
+    headers:
+    - x-mod-new-header:myvalue
+  replace:
+    headers:
+    - User-Agent:MoD -- $(headers["User-Agent"])
+plugin: request-transformer

@@ -1,0 +1,9 @@
+ apiVersion: configuration.konghq.com/v1
+ kind: KongPlugin
+ metadata:
+   name: client1-key-auth
+   namespace: client1
+ plugin: key-auth
+ config:
+   key_names:
+   - apikey

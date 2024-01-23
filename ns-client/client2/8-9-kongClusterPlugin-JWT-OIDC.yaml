@@ -1,0 +1,19 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: client2-oidc
+  namespace: client2
+  annotations:
+    kubernetes.io/ingress.class: kong-client2
+config:
+  issuer: https://sso.apim.eu:8443/auth/realms/Jerome/.well-known/openid-configuration
+  client_id: 
+  - kong
+  client_secret: 
+  - VdMh4tbVTSlM6WFaQzEFYj4DR4r7BaKf
+  consumer_optional: true
+  auth_methods: 
+  - client_credentials
+  - introspection
+  verify_parameters: false
+plugin: openid-connect

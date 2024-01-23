@@ -1,0 +1,6 @@
+curl -i -N \
+  -H "Connection: Upgrade"\
+  -H "Sec-WebSocket-Version: 13"\
+  -H "Upgrade: websocket"\
+  -H "Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==" \
+  http://34.140.143.159/client1/websocket-kube-connector
