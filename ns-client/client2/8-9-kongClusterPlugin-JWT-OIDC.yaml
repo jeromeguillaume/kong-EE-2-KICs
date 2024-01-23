@@ -8,9 +8,9 @@ metadata:
 config:
   issuer: https://sso.apim.eu:8443/auth/realms/Jerome/.well-known/openid-configuration
   client_id: 
-  - kong
+  - 
   client_secret: 
-  - VdMh4tbVTSlM6WFaQzEFYj4DR4r7BaKf
+  - 
   consumer_optional: true
   auth_methods: 
   - client_credentials
